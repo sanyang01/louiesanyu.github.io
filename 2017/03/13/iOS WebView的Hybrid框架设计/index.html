@@ -87,15 +87,24 @@
 
 
 
-<meta name="description" content="记录成长的脚步">
-<meta property="og:type" content="website">
-<meta property="og:title" content="刘洋的博客">
-<meta property="og:url" content="https://louiesanyu.github.io/index.html">
+<meta name="description" content="##前言随着移动互联网的发展，APP开发模式也在不断的创新，从最初的Native开发到后来的Hybrid混合开发，再到最近比较火爆的React Native、Weex等项目，这些都标志着APP开发已经不再是纯Native的工作，还要涉及很多跨平台的技术。
+作为一种混合开发模式，Hybrid APP底层依赖Native端的Web容器（UIWebview和WKWebview），上层使用前端Html5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS WebView的Hybrid框架设计">
+<meta property="og:url" content="https://louiesanyu.github.io/2017/03/13/iOS WebView的Hybrid框架设计/index.html">
 <meta property="og:site_name" content="刘洋的博客">
-<meta property="og:description" content="记录成长的脚步">
+<meta property="og:description" content="##前言随着移动互联网的发展，APP开发模式也在不断的创新，从最初的Native开发到后来的Hybrid混合开发，再到最近比较火爆的React Native、Weex等项目，这些都标志着APP开发已经不再是纯Native的工作，还要涉及很多跨平台的技术。
+作为一种混合开发模式，Hybrid APP底层依赖Native端的Web容器（UIWebview和WKWebview），上层使用前端Html5">
+<meta property="og:image" content="http://omlsyhv0n.bkt.clouddn.com/2015-04-20-cross-platform-and-hybrid.jpg?e=1489201474&token=SJva4t2lwz69bUXcqiMvDKMgZmEiT0Bo_Im5-fsA:VFOldQihpmo6wY7hq5jS8nyfxjY">
+<meta property="og:image" content="http://omlsyhv0n.bkt.clouddn.com/WechatIMG9.jpeg?e=1489213387&token=SJva4t2lwz69bUXcqiMvDKMgZmEiT0Bo_Im5-fsA:wsSoSdO5UiMGFtqP7SM3yDa1n68">
+<meta property="og:image" content="http://omlsyhv0n.bkt.clouddn.com/WechatIMG10.jpeg?e=1489298295&token=SJva4t2lwz69bUXcqiMvDKMgZmEiT0Bo_Im5-fsA:8OmbYL0XvtD_gAbOwwdDud93THI">
+<meta property="og:image" content="http://omlsyhv0n.bkt.clouddn.com/WechatIMG36.jpeg?e=1489317078&token=SJva4t2lwz69bUXcqiMvDKMgZmEiT0Bo_Im5-fsA:IZA0cC9qTDZYHe9FMfl5RXEynGo">
+<meta property="og:updated_time" content="2017-03-12T16:07:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刘洋的博客">
-<meta name="twitter:description" content="记录成长的脚步">
+<meta name="twitter:title" content="iOS WebView的Hybrid框架设计">
+<meta name="twitter:description" content="##前言随着移动互联网的发展，APP开发模式也在不断的创新，从最初的Native开发到后来的Hybrid混合开发，再到最近比较火爆的React Native、Weex等项目，这些都标志着APP开发已经不再是纯Native的工作，还要涉及很多跨平台的技术。
+作为一种混合开发模式，Hybrid APP底层依赖Native端的Web容器（UIWebview和WKWebview），上层使用前端Html5">
+<meta name="twitter:image" content="http://omlsyhv0n.bkt.clouddn.com/2015-04-20-cross-platform-and-hybrid.jpg?e=1489201474&token=SJva4t2lwz69bUXcqiMvDKMgZmEiT0Bo_Im5-fsA:VFOldQihpmo6wY7hq5jS8nyfxjY">
 
 
 
@@ -123,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://louiesanyu.github.io/"/>
+  <link rel="canonical" href="https://louiesanyu.github.io/2017/03/13/iOS WebView的Hybrid框架设计/"/>
 
 
 
 
 
-  <title> 刘洋的博客 </title>
+  <title> iOS WebView的Hybrid框架设计 | 刘洋的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -164,9 +173,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -259,9 +266,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -294,10 +301,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/03/13/iOS WebView的Hybrid框架设计/" itemprop="url">
-                  iOS WebView的Hybrid框架设计
-                </a>
+                iOS WebView的Hybrid框架设计
               
             
           </h1>
@@ -358,9 +362,7 @@
       
 
       
-        
-          
-            <p><img src="http://omlsyhv0n.bkt.clouddn.com/2015-04-20-cross-platform-and-hybrid.jpg?e=1489201474&amp;token=SJva4t2lwz69bUXcqiMvDKMgZmEiT0Bo_Im5-fsA:VFOldQihpmo6wY7hq5jS8nyfxjY" alt="这里写图片描述"></p>
+        <p><img src="http://omlsyhv0n.bkt.clouddn.com/2015-04-20-cross-platform-and-hybrid.jpg?e=1489201474&amp;token=SJva4t2lwz69bUXcqiMvDKMgZmEiT0Bo_Im5-fsA:VFOldQihpmo6wY7hq5jS8nyfxjY" alt="这里写图片描述"></p>
 <p>##前言<br>随着移动互联网的发展，APP开发模式也在不断的创新，从最初的Native开发到后来的Hybrid混合开发，再到最近比较火爆的React Native、Weex等项目，这些都标志着APP开发已经不再是纯Native的工作，还要涉及很多跨平台的技术。</p>
 <p>作为一种混合开发模式，Hybrid APP底层依赖Native端的Web容器（UIWebview和WKWebview），上层使用前端Html5、CSS、Javascript做业务开发，这种开发模式非常适合业务快速拓展和迭代，在不发版本的前提下直接更新线上资源，受到不少公司的青睐于关注。</p>
 <p>对于Hybrid APP开发，虽然业内早已出现Cordova（PhoneGap）、JQuery Mobile等框架，但是由于性能、维护成本等原因，并没有在业内非常流行，有些公司转而选择自己开发一套Hybrid框架，但是由于没有丰富的经验和应用场景导致开发出来的Hybrid框架后期维护成本很高。本文我将对在公司开发的Hybrid解决方案跟大家做一个介绍，希望对各位的技术选型起到帮助，也欢迎大家积极交流。</p>
@@ -462,147 +464,41 @@
 <p>以设置右侧按钮为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">协议标准 hybrid_scheme://configNative?params=&#123;configs:[&#123;type:nav_item_right, title:, icon_url:, action:, action_parameters: &#125;]&#125;</div><div class="line"></div><div class="line">//configNative桥接</div><div class="line">    [self.jsBridge registerHandler:@&quot;configNative&quot; handler:^(id data) &#123;</div><div class="line">        __strong typeof(self) strongSelf = weakSelf;</div><div class="line">        if (strongSelf.jsBridge.delegate &amp;&amp;</div><div class="line">            [strongSelf.jsBridge.delegate respondsToSelector:@selector(configNativeWithDatas:)]) &#123;</div><div class="line">            if ([strongSelf.jsBridge.delegate configNativeWithDatas:data])  //业务子类进行拓展</div><div class="line">                return;</div><div class="line">        &#125;</div><div class="line">        if ([data isKindOfClass:[NSDictionary class]]) &#123;</div><div class="line">            NSString* strOfConfigs = data[@&quot;configs&quot;];</div><div class="line">            if (strOfConfigs == nil || [strOfConfigs isEqualToString:@&quot;&quot;])</div><div class="line">                return;</div><div class="line">            NSError *error = nil;</div><div class="line">            NSArray *arrConfigs = [NSJSONSerialization JSONObjectWithData:[strOfConfigs dataUsingEncoding:NSUTF8StringEncoding]</div><div class="line">                                                                  options:NSJSONReadingAllowFragments error:&amp;error];</div><div class="line">            if (error || !arrConfigs)</div><div class="line">                return;</div><div class="line">            </div><div class="line">            for (NSDictionary* config in arrConfigs) &#123;</div><div class="line">                NSString *strType = config[@&quot;type&quot;];</div><div class="line">                if (!strType || [strType isEqualToString:@&quot;&quot;])</div><div class="line">                    continue;</div><div class="line">                if ([strType isEqualToString:@&quot;nav_item_right&quot;]) &#123;</div><div class="line">                    YZNavigationItemConfigModel *model = [[YZNavigationItemConfigModel alloc] initWithDictionary:config error:&amp;error];</div><div class="line">                    if (error) &#123;</div><div class="line">                        error = nil;</div><div class="line">                        continue;</div><div class="line">                    &#125;</div><div class="line">                    [strongSelf.rightMenuBarButtonItems addObject:[strongSelf p_configRightBarButtonItemsWithModel:model]];</div><div class="line">                    if (strongSelf.rightMenuBarButtonItems) &#123;</div><div class="line">                        [strongSelf.navigationItem setRightBarButtonItems:strongSelf.rightMenuBarButtonItems];</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;];</div></pre></td></tr></table></figure></p>
 <p>###总结<br>Hybrid框架依靠快速迭代，快速试错在业务开发中使用非常广泛。本文初衷是想为那些准备使用Hybrid框架的人提供设计上的思路，并通过实际的事例去展示结果，希望对Hybrid感兴趣的朋友一起来把Hybrid一整套解决方案落地并且能够提供开源。</p>
 
-          
-        
       
     </div>
 
     <div>
       
+        
+
+      
     </div>
 
     <div>
       
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://louiesanyu.github.io/2017/02/19/2017第一篇/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="刘洋">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/header.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="刘洋的博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="刘洋的博客" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/19/2017第一篇/" itemprop="url">
-                  2017第一篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-19T14:59:59+08:00">
-                2017-02-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/02/19/2017第一篇/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/19/2017第一篇/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/weixinpay.jpeg" alt="刘洋 WeChat Pay"/>
+          <p>微信打赏</p>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
       
       
-
-      
-        
-          
-            <p>2017需要改变，改变就从第一个博客网站开始，记录学习、工作和生活的点滴，未来加油。</p>
-
-          
-        
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="刘洋 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
       
     </div>
+  </div>
 
-    <div>
-      
-    </div>
 
-    <div>
       
     </div>
 
@@ -611,21 +507,38 @@
       
 
       
-
+        
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/19/2017第一篇/" rel="next" title="2017第一篇">
+                <i class="fa fa-chevron-left"></i> 2017第一篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -633,6 +546,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/13/iOS WebView的Hybrid框架设计/"
+           data-title="iOS WebView的Hybrid框架设计" data-url="https://louiesanyu.github.io/2017/03/13/iOS WebView的Hybrid框架设计/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -823,6 +744,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
